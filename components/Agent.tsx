@@ -18,6 +18,15 @@ const Agent = ({ userName} : AgentProps) => {
     ]
     const lastMessage = messages[messages.length - 1];
 
+
+    //TODO
+    const onMessage = (message: Message) => {
+        if (message.type === "transcript" && message.transcriptType === "final") {
+            const newMessage = { role: message.role, content: message.transcript };
+            setMessages((prev) => [...prev, newMessage]);
+        }
+    };
+
     return (
         <>
             <div className="call-view">
